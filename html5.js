@@ -38,6 +38,17 @@ function saveToStorage() {
     const dragged = document.getElementById(data);
     ev.target.appendChild(dragged);
   }
+  function startWorker() {
+    if (window.Worker) {
+      const worker = new Worker('worker.js');
+      worker.postMessage('Nazlım');
+      worker.onmessage = function(e) {
+        document.getElementById('workerOutput').innerText = e.data;
+      };
+    } else {
+      document.getElementById('workerOutput').innerText = 'Web Worker desteklenmiyor.';
+    }
+  }
   
   
   window.onload = () => {
