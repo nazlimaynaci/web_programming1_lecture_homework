@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="table.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Web-programming-1 Lecture Homework</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="table.html" class="active">Table</a></li>
+      <li><a href="html5.html">HTML5</a></li>
+      <li><a href="chartjs.html">ChartJS</a></li>
+      <li><a href="ajax.html">AJAX</a></li>
+      <li><a href="oojs.html">OOJS</a></li>
+      <li><a href="react.html">React</a></li>
+    </ul>
+  </nav>
+
+  <aside>
+    <p>This is a side content area.</p>
+  </aside>
+
+  <main id="div-content">
+    <h2>CRUD Table</h2>
+
+    <div>
+      <label>Name: <input type="text" id="name" required minlength="2" maxlength="20"></label>
+      <label>Age: <input type="number" id="age" required min="1" max="120"></label>
+      <label>Email: <input type="email" id="email" required></label>
+      <label>City: <input type="text" id="city" required minlength="2" maxlength="30"></label>
+      <button onclick="addRow()">Add</button>
+    </div>
+
+    <input type="text" id="search" placeholder="Search..." onkeyup="filterTable()">
+
+    <table id="crud-table" border="1">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Name</th>
+          <th onclick="sortTable(1)">Age</th>
+          <th onclick="sortTable(2)">Email</th>
+          <th onclick="sortTable(3)">City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic Rows -->
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Created by Nazlım Aynacı H25GW8 and Sueda Ebrar Tutu O7M8A9</p>
+  </footer>
+</body>
+</html>
