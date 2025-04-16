@@ -10,20 +10,22 @@ function saveToStorage() {
   }
   
   
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        document.getElementById("locationOutput").innerText =
-          `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
-      }, function(error) {
-        document.getElementById("locationOutput").innerText = "Permission denied or unavailable.";
-      });
+  async function getLocation() {
+    if ('geolocation' in navigator) {
+        try {
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+            document.getElementById("locationOutput").innerText =
+                `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+        } catch (error) {
+            document.getElementById("locationOutput").innerText = "Permission denied or unavailable.";
+        }
     } else {
-      document.getElementById("locationOutput").innerText = "Geolocation is not supported.";
+        document.getElementById("locationOutput").innerText = "Geolocation is not supported.";
     }
-  }
+}
   
- 
   function allowDrop(ev) {
     ev.preventDefault();
   }
