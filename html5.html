@@ -67,8 +67,26 @@
         <h3>6. Web Worker</h3>
         <button onclick="startWorker()">Start Worker</button>
         <p id="workerOutput"></p>
-      </section>
-    
+    </section>
+
+    <section>
+      <h2>Server-Sent Events</h2>
+      <div id="sseOutput">Bağlantı bekleniyor...</div>
+    </section>
+    <script>
+      if (typeof (EventSource) !== "undefined") {
+        const source = new EventSource("https://stream.wikimedia.org/v2/stream/recentchange");
+        
+        source.onmessage = function (event) {
+          const data = JSON.parse(event.data);
+          document.getElementById("sseOutput").innerText =
+            `Sayfa: ${data.title} — Kullanıcı: ${data.user}`;
+        };
+      } else {
+        document.getElementById("sseOutput").innerText = "Tarayıcınız SSE desteklemiyor.";
+      }
+    </script>
+
    
   </main>
 
