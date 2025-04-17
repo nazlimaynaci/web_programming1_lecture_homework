@@ -119,3 +119,39 @@ body {
   #task-table td:nth-child(2) {
     text-align: center;
   }
+  .calculator {
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+    text-align: center;
+  }
+  
+  .calculator input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .calculator-buttons button {
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .calculator-buttons button:hover {
+    background-color: #155a9e;
+  }
+  
