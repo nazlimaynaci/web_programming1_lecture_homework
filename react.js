@@ -84,3 +84,23 @@ function Calculator() {
     </div>
   );
 }
+const calculatorRoot = ReactDOM.createRoot(document.getElementById('calculator'));
+const snakeRoot = ReactDOM.createRoot(document.getElementById('snake'));
+
+calculatorRoot.render(<Calculator />);
+snakeRoot.render(<SnakeGame />);
+
+// ---- SPA Menu Navigation ----
+document.getElementById('calculator-link').addEventListener('click', function () {
+  document.getElementById('calculator').style.display = 'block';
+  document.getElementById('snake').style.display = 'none';
+  this.classList.add('active');
+  document.getElementById('snake-link').classList.remove('active');
+});
+
+document.getElementById('snake-link').addEventListener('click', function () {
+  document.getElementById('calculator').style.display = 'none';
+  document.getElementById('snake').style.display = 'block';
+  this.classList.add('active');
+  document.getElementById('calculator-link').classList.remove('active');
+});
