@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>React SPA - Calculator & Snake Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <header><h1>Mini React SPA</h1></header>
+  <nav>
+    <ul>
+      <li><a href="#" id="calculator-link" class="active">Calculator</a></li>
+      <li><a href="#" id="snake-link">Snake Game</a></li>
+    </ul>
+  </nav>
+  <main>
+    <div id="calculator" class="app-section"></div>
+    <div id="snake" class="app-section" style="display: none;"></div>
+  </main>
+  <footer>© 2025 Erasmus React Project</footer>
+
+  <script type="text/javascript">
+    const { useState, useEffect } = React;
+
+    function Calculator() {
+      const [input, setInput] = useState('');
+      const handleClick = (value) => {
+        if (value === '=') {
+          try {
+            setInput(eval(input).toString());
+          } catch {
+            setInput('Error');
+          }
+        } else if (value === 'C') {
+          setInput('');
+        } else {
+          setInput(prev => prev + value);
+        }
+      };
+
+      const buttons = ['7','8','9','/','4','5','6','*','1','2','3','-','0','.','=','+','C'];
+
+      return (
+        <div className="calculator">
+          <input value={input} readOnly />
+          <div className="calculator-buttons">
+            {buttons.map((btn, i) => (
+              <button key={i} onClick={() => handleClick(btn)}>{btn}</button>
+            ))}
+          </div>
+        </div>
+      );
+    }
