@@ -23,5 +23,38 @@
       <li><a href="react.html">React</a></li>
     </ul>
   </nav>
+  <aside>
+    <p>This is a side content area.</p>
+  </aside>
+
+  <main id="div-content">
+    <h2>AJAX API - CRUD Operations</h2>
+
+    <div>
+      <label>Name: <input type="text" id="name"></label>
+      <label>Height: <input type="text" id="height"></label>
+      <label>Weight: <input type="text" id="weight"></label>
+      <button onclick="createData()">Create</button>
+      <button onclick="readData()">Read</button>
+    </div>
+
+    <div>
+      <label>ID to Update: <input type="text" id="updateId"></label>
+      <button onclick="getDataForId()">Get Data</button>
+      <button onclick="updateData()">Update</button>
+    </div>
+
+    <div>
+      <label>ID to Delete: <input type="text" id="deleteId"></label>
+      <button onclick="deleteData()">Delete</button>
+    </div>
+
+    <hr>
+    <div id="output"></div>
+  </main>
+
+  <footer>
+    <p>Created by Sueda Ebrar TUTU (O7M8A9) and Nazlım AYNACI (H25GW8)</p>
+  </footer>
 </body>
 </html>
