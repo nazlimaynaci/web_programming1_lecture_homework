@@ -102,3 +102,20 @@ body {
     border: none;
     border-top: 1px solid #ccc;
   }
+  #task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: sans-serif;
+  }
+  
+  #task-table th,
+  #task-table td {
+    border: 1px solid #ccc;
+    padding: 10px 12px;
+    text-align: left;
+  }
+  
+  #task-table td:nth-child(2) {
+    text-align: center;
+  }
