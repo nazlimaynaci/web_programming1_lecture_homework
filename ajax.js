@@ -6,12 +6,12 @@ function createData() {
     const weight = document.getElementById("weight").value;
   
     if (!name || !height || !weight) {
-      alert("Tüm alanları doldurun.");
+      alert("Please fill in all the fields.");
       return;
     }
   
     if (name.length > 30 || height.length > 30 || weight.length > 30) {
-      alert("Alanlar en fazla 30 karakter olabilir.");
+      alert("Fields can contain a maximum of 30 characters.");
       return;
     }
   
@@ -22,7 +22,7 @@ function createData() {
     })
     .then((res) => res.text())
     .then((res) => {
-      alert("Kayıt eklendi!");
+      alert("Record added!");
       readData(); 
     });
 }
@@ -37,7 +37,7 @@ function readData() {
   
         data.list.forEach((item) => {
           const div = document.createElement("div");
-          div.innerText = `ID: ${item.id} | Ad: ${item.name} | Boy: ${item.height} | Kilo: ${item.weight}`;
+          div.innerText = `ID: ${item.id} | Name: ${item.name} | Height: ${item.height} | Weight: ${item.weight}`;
           output.appendChild(div);
   
           const h = parseFloat(item.height);
@@ -48,7 +48,7 @@ function readData() {
         });
   
         const avg = data.list.length > 0 ? (sum / data.list.length).toFixed(2) : 0;
-        output.innerHTML += `<hr>Boy Toplam: ${sum}, Ortalama: ${avg}, En Büyük: ${max}`;
+        output.innerHTML += `<hr>Total Height: ${sum}, Average: ${avg}, Max: ${max}`;
       });
 }
 function getDataForId() {
@@ -63,7 +63,7 @@ function getDataForId() {
           document.getElementById("update-height").value = item.height;
           document.getElementById("update-weight").value = item.weight;
         } else {
-          alert("ID bulunamadı.");
+          alert("ID not found.");
         }
       });
 }
@@ -74,12 +74,12 @@ function updateData() {
     const weight = document.getElementById("update-weight").value;
   
     if (!id || !name || !height || !weight) {
-      alert("Tüm alanları doldurun.");
+      alert("Please fill in all the fields.");
       return;
     }
   
     if (name.length > 30 || height.length > 30 || weight.length > 30) {
-      alert("Alanlar en fazla 30 karakter olabilir.");
+      alert("Fields can contain a maximum of 30 characters.");
       return;
     }
   
@@ -90,14 +90,14 @@ function updateData() {
     })
       .then((res) => res.text())
       .then((res) => {
-        alert("Kayıt güncellendi!");
+        alert("Record updated!");
         readData();
     });
 }
 function deleteData() {
     const id = document.getElementById("delete-id").value;
     if (!id) {
-      alert("ID girin");
+      alert("Please enter an ID!");
       return;
     }
   
@@ -108,7 +108,7 @@ function deleteData() {
     })
       .then((res) => res.text())
       .then((res) => {
-        alert("Kayıt silindi!");
+        alert("Record deleted!");
         readData();
       });
 }
