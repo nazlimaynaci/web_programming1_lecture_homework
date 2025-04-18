@@ -51,7 +51,23 @@ function saveToStorage() {
       document.getElementById('workerOutput').innerText = 'Web Worker desteklenmiyor.';
     }
   }
-  
+window.addEventListener("DOMContentLoaded", () => {
+  const sseOutput = document.getElementById("sseOutput");
+  if (sseOutput && typeof (EventSource) !== "undefined") {
+    const source = new EventSource("https://stream.wikimedia.org/v2/stream/recentchange");
+
+    source.onmessage = function (event) {
+      const data = JSON.parse(event.data);
+      const title = data.title.length > 25 ? data.title.slice(0, 25) + "..." : data.title;
+      const user = data.user.length > 20 ? data.user.slice(0, 20) + "..." : data.user;
+
+      sseOutput.innerText = `Sayfa: ${title}\nKullanıcı: ${user}`;
+    };
+  } else if (sseOutput) {
+    sseOutput.innerText = "Tarayıcınız SSE desteklemiyor.";
+  }
+});
+
   
   window.onload = () => {
     const canvas = document.getElementById("myCanvas");

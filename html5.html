@@ -70,22 +70,10 @@
     </section>
 
     <section>
-      <h2>Server-Sent Events</h2>
+      <h3>7. Server-Sent Events</h3>
       <div id="sseOutput">Bağlantı bekleniyor...</div>
     </section>
-    <script>
-      if (typeof (EventSource) !== "undefined") {
-        const source = new EventSource("https://stream.wikimedia.org/v2/stream/recentchange");
-        
-        source.onmessage = function (event) {
-          const data = JSON.parse(event.data);
-          document.getElementById("sseOutput").innerText =
-            `Sayfa: ${data.title} — Kullanıcı: ${data.user}`;
-        };
-      } else {
-        document.getElementById("sseOutput").innerText = "Tarayıcınız SSE desteklemiyor.";
-      }
-    </script>
+    <script defer src="html5.js"></script>
 
    
   </main>
