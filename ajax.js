@@ -1,4 +1,4 @@
-const code = ""; 
+const code = "H25GW8ajax123";
 const apiUrl = "http://gamf.nhely.hu/ajax2/";
 function createData() {
     const name = document.getElementById("name").value;
@@ -27,32 +27,40 @@ function createData() {
     });
 }
 function readData() {
-    fetch(`${apiUrl}?op=read&code=${code}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const output = document.getElementById("output");
-        output.innerHTML = "";
-        let sum = 0;
-        let max = 0;
-  
-        data.list.forEach((item) => {
-          const div = document.createElement("div");
-          div.innerText = `ID: ${item.id} | Name: ${item.name} | Height: ${item.height} | Weight: ${item.weight}`;
-          output.appendChild(div);
-  
-          const h = parseFloat(item.height);
-          if (!isNaN(h)) {
-            sum += h;
-            if (h > max) max = h;
-          }
-        });
-  
-        const avg = data.list.length > 0 ? (sum / data.list.length).toFixed(2) : 0;
-        output.innerHTML += `<hr>Total Height: ${sum}, Average: ${avg}, Max: ${max}`;
+  const formData = new FormData();
+  formData.append("op", "read");
+  formData.append("code", code);
+
+  fetch(apiUrl, {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+      let sum = 0;
+      let max = 0;
+
+      data.list.forEach((item) => {
+        const div = document.createElement("div");
+        div.innerText = `ID: ${item.id} | Name: ${item.name} | Height: ${item.height} | Weight: ${item.weight}`;
+        output.appendChild(div);
+
+        const h = parseFloat(item.height);
+        if (!isNaN(h)) {
+          sum += h;
+          if (h > max) max = h;
+        }
       });
+
+      const avg = data.list.length > 0 ? (sum / data.list.length).toFixed(2) : 0;
+      output.innerHTML += `<hr>Total Height: ${sum}, Average: ${avg}, Max: ${max}`;
+    });
 }
+
 function getDataForId() {
-    const id = document.getElementById("update-id").value;
+  const id = document.getElementById("updateId").value;
   
     fetch(`${apiUrl}?op=read&code=${code}`)
       .then((res) => res.json())
