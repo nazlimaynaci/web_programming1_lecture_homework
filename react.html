@@ -2,134 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>React SPA - Calculator & Snake Game</title>
+  <title>React SPA - Calculator and Snake</title>
   <link rel="stylesheet" href="style.css" />
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="react.js"></script>
+  <style>
+    .menu button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .active {
+      background-color: #1976d2;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <header><h1>Mini React SPA</h1></header>
+  <header><h1>Web-programming-1 Lecture Homework</h1></header>
   <nav>
     <ul>
-      <li><a href="#" id="calculator-link" class="active">Calculator</a></li>
-      <li><a href="#" id="snake-link">Snake Game</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="table.html">Table</a></li>
+      <li><a href="html5.html">HTML5</a></li>
+      <li><a href="chartjs.html">ChartJS</a></li>
+      <li><a href="ajax.html">AJAX</a></li>
+      <li><a href="oojs.html">OOJS</a></li>
+      <li><a href="react.html" class="active">React</a></li>
     </ul>
   </nav>
-  <main>
-    <div id="calculator" class="app-section"></div>
-    <div id="snake" class="app-section" style="display: none;"></div>
+  <aside>React Single Page Application</aside>
+
+  <main id="div-content">
+    <div class="menu">
+      <button id="btn-calculator">Calculator</button>
+      <button id="btn-snake">Snake Game</button>
+    </div>
+    <div id="react-root"></div>
   </main>
-  <footer>© 2025 Erasmus React Project</footer>
 
-  <script type="text/javascript">
-    const { useState, useEffect } = React;
+  <footer>Created by Sueda Ebrar TUTU (O7M8A9) and Nazlım AYNACI (H25GW8)</footer>
 
-    function Calculator() {
-      const [input, setInput] = useState('');
-      const handleClick = (value) => {
-        if (value === '=') {
-          try {
-            setInput(eval(input).toString());
-          } catch {
-            setInput('Error');
-          }
-        } else if (value === 'C') {
-          setInput('');
-        } else {
-          setInput(prev => prev + value);
-        }
-      };
-
-      const buttons = ['7','8','9','/','4','5','6','*','1','2','3','-','0','.','=','+','C'];
-
-      return (
-        <div className="calculator">
-          <input value={input} readOnly />
-          <div className="calculator-buttons">
-            {buttons.map((btn, i) => (
-              <button key={i} onClick={() => handleClick(btn)}>{btn}</button>
-            ))}
-          </div>
-        </div>
-      );
-    } function SnakeGame() {
-      const [snake, setSnake] = useState([{x: 10, y: 10}]);
-      const [food, setFood] = useState({x: 5, y: 5});
-      const [direction, setDirection] = useState('RIGHT');
-
-      useEffect(() => {
-        const move = () => {
-          const head = { ...snake[0] };
-          if (direction === 'RIGHT') head.x++;
-          if (direction === 'LEFT') head.x--;
-          if (direction === 'UP') head.y--;
-          if (direction === 'DOWN') head.y++;
-          
-          const newSnake = [head, ...snake.slice(0, -1)];
-
-          if (head.x === food.x && head.y === food.y) {
-            newSnake.push({...snake[snake.length - 1]});
-            setFood({ x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) });
-          }
-
-          setSnake(newSnake);
-        };
-
-        const interval = setInterval(move, 200);
-        return () => clearInterval(interval);
-      }, [snake, direction]);
-
-      useEffect(() => {
-        const handleKey = (e) => {
-          switch (e.key) {
-            case 'ArrowUp': setDirection('UP'); break;
-            case 'ArrowDown': setDirection('DOWN'); break;
-            case 'ArrowLeft': setDirection('LEFT'); break;
-            case 'ArrowRight': setDirection('RIGHT'); break;
-          }
-        };
-        window.addEventListener('keydown', handleKey);
-        return () => window.removeEventListener('keydown', handleKey);
-      }, []);
-
-      const cells = [];
-      for (let y = 0; y < 20; y++) {
-        for (let x = 0; x < 20; x++) {
-          let className = '';
-          if (snake.some(s => s.x === x && s.y === y)) className = 'snake-cell';
-          if (food.x === x && food.y === y) className = 'food-cell';
-          cells.push(<div key={`${x}-${y}`} className={className}></div>);
-        }
-      }
-
-      return (
-        <div className="snake-game">
-          <div id="game-board">{cells}</div>
-          <p>Use Arrow Keys to Move</p>
-        </div>
-      );
-    }
-    const calculatorRoot = ReactDOM.createRoot(document.getElementById('calculator'));
-    const snakeRoot = ReactDOM.createRoot(document.getElementById('snake'));
-
-    calculatorRoot.render(<Calculator />);
-    snakeRoot.render(<SnakeGame />);
-
-    document.getElementById('calculator-link').addEventListener('click', function () {
-      document.getElementById('calculator').style.display = 'block';
-      document.getElementById('snake').style.display = 'none';
-      this.classList.add('active');
-      document.getElementById('snake-link').classList.remove('active');
-    });
-
-    document.getElementById('snake-link').addEventListener('click', function () {
-      document.getElementById('calculator').style.display = 'none';
-      document.getElementById('snake').style.display = 'block';
-      this.classList.add('active');
-      document.getElementById('calculator-link').classList.remove('active');
-    });
-  </script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script defer src="react.js"></script>
 </body>
-</html>
+</html> 
