@@ -74,13 +74,20 @@ body {
     background-color: #f2f2f2;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .page-table th:hover {
+    background-color: #e0e0e0;
   }
   
   .page-table input[type="text"],
   .page-table input[type="number"] {
     padding: 6px;
-    margin: 4px 0;
-    width: 200px;
+    margin: 6px 4px;
+    width: 180px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
   }
   
   .page-table button {
@@ -197,6 +204,7 @@ body {
   .snake-controls button:hover {
     background-color: #155a9e;
   }
+  /* Ajax Page Styling */
   .page-ajax {
     display: flex;
     flex-direction: column;
