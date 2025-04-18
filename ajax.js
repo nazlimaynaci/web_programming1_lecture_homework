@@ -1,5 +1,6 @@
 const code = "H25GW8ajax123";
-const apiUrl = "http://gamf.nhely.hu/ajax2/";
+const apiUrl = "https://gamf.nhely.hu/ajax2/";
+
 
 function createData() {
   const name = document.getElementById("name").value;
