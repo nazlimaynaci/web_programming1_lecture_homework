@@ -44,10 +44,11 @@ function CalculatorApp() {
     result !== null && React.createElement("p", null, `Result: ${result}`)
   );
 }
+const gridSize = 20;
 const generateFood = () => {
   const x = Math.floor(Math.random() * gridSize);
   const y = Math.floor(Math.random() * gridSize);
-  return { x, y };
+  return [ x, y ];
 };
 
 function SnakeGame() {
