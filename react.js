@@ -44,11 +44,16 @@ function CalculatorApp() {
     result !== null && React.createElement("p", null, `Result: ${result}`)
   );
 }
+const generateFood = () => {
+  const x = Math.floor(Math.random() * gridSize);
+  const y = Math.floor(Math.random() * gridSize);
+  return { x, y };
+};
+
 function SnakeGame() {
   const [snake, setSnake] = React.useState([[0, 0]]);
   const [direction, setDirection] = React.useState("RIGHT");
   const [food, setFood] = React.useState(generateFood());
-  const [gridSize] = React.useState(10);
   const [score, setScore] = React.useState(0);
 
   React.useEffect(() => {
@@ -68,12 +73,6 @@ function SnakeGame() {
     const interval = setInterval(moveSnake, 300);
     return () => clearInterval(interval);
   }, [snake, direction]);
-
-  function generateFood() {
-    const x = Math.floor(Math.random() * gridSize);
-    const y = Math.floor(Math.random() * gridSize);
-    return [x, y];
-  }
 
   function moveSnake() {
     const newSnake = [...snake];
