@@ -31,20 +31,30 @@
     <h2>AJAX API - CRUD Operations</h2>
 
     <div>
-      <label>Name: <input type="text" id="name"></label>
-      <label>Height: <input type="text" id="height"></label>
-      <label>Weight: <input type="text" id="weight"></label>
+      <h3>Create Record</h3>
+      <label>Name: <input type="text" id="name"></label><br />
+      <label>Height: <input type="text" id="height"></label><br />
+      <label>Weight: <input type="text" id="weight"></label><br />
       <button onclick="createData()">Create</button>
       <button onclick="readData()">Read</button>
     </div>
 
+    <hr />
+
     <div>
-      <label>ID to Update: <input type="text" id="updateId"></label>
-      <button onclick="getDataForId()">Get Data</button>
+      <h3>Update Record</h3>
+      <label>ID to Update: <input type="text" id="updateId"></label><br />
+      <button onclick="getDataForId()">Get Data</button><br /><br />
+      <label>Name: <input type="text" id="update-name"></label><br />
+      <label>Height: <input type="text" id="update-height"></label><br />
+      <label>Weight: <input type="text" id="update-weight"></label><br />
       <button onclick="updateData()">Update</button>
     </div>
 
+    <hr />
+
     <div>
+      <h3>Delete Record</h3>
       <label>ID to Delete: <input type="text" id="deleteId"></label>
       <button onclick="deleteData()">Delete</button>
     </div>
